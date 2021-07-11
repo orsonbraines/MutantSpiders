@@ -1,0 +1,21 @@
+Genes:
+	recessive or dominant
+
+	floats:
+		attraction to other spiders
+		speed
+		size
+		bite strength
+		web distance
+		web speed
+		stamina/energy
+		appetite?
+
+	booleans:
+		leg sharpness
+
+
+Methods for fighting:
+	1. Shoot web -> long range
+	2. Bite -> short range
+	3. Sharp legs -> decapitation
