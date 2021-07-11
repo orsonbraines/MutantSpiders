@@ -37,7 +37,6 @@ class Spider:
 	def draw(self, surface):
 		trans = Transform((self.x, self.y), self.theta)
 		self.draw_head(surface)
-		#pg.draw.ellipse(surface, (0,0,0), (-12 + self.x, 3 + self.y, 24, 40))
 		self.draw_body(surface)
 		self.draw_legs(surface)
 		self.draw_eyes(surface)
