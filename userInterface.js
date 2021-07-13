@@ -1,10 +1,3 @@
-var mouse = {
-	x:0,
-	y:0,
-	button:0,
-}
-var lastMouse = {...mouse};
-
 window.addEventListener('mousemove',e=>{
 	updateMouse(e);
 });

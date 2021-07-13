@@ -9,7 +9,7 @@ class Transform {
 			this.yx *= -1;
 			this.yy *= -1;
 		}
-		this.yt = pos[0];
+		this.yt = pos[1];
 		this.scale = 1;
 	}
 

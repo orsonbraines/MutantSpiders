@@ -1,8 +1,3 @@
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-var frames = 0;
-var spider;
-
 initGame();
 
 function resizeCanvas(){
@@ -25,6 +20,15 @@ window.addEventListener('resize',e => {
 });
 
 function gameLoop(){
+	const delta = [mouse.x - spider.x, mouse.y - spider.y];
+	deltaR = Math.sqrt(delta[0] * delta[0] + delta[1] * delta[1]);
+	spider.theta = Math.atan2(-delta[1], delta[0]) - Math.PI / 2;
+	//console.log(delta[0],delta[1],spider.theta);
+	const v = 5;
+	if(deltaR >= v) {
+		spider.x += delta[0] * v / deltaR;
+		spider.y += delta[1] * v / deltaR;
+	}
 	drawGame();
 	frames++;
 	requestAnimationFrame(gameLoop);
