@@ -12,6 +12,7 @@ function initGame(){
 	ctx.lineWidth = 2;
 	ctx.lineCap = 'round';
 	spider = new Spider();
+	player = new Player();
 	gameLoop();
 }
 
@@ -35,6 +36,10 @@ function gameLoop(){
 }
 function drawGame(){
 	ctx.clearRect(0,0,canvas.width,canvas.height);
-	if(frames % 10 == 0) spider.tick();
-	spider.draw(ctx);
+	if(frames % 10 == 0){
+		// spider.tick();
+		player.tick();
+	}
+	// spider.draw(ctx);
+	player.draw(ctx);
 }
