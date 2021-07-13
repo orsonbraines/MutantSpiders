@@ -19,7 +19,7 @@ window.addEventListener('mouseup',e=>{
 function updateMouse(e){
 	let c = canvas.getBoundingClientRect();
 	Object.assign(lastMouse,mouse);
-  mouse.x = e.clientX - c.x;
-  mouse.y = e.clientY - c.y;
+	mouse.x = e.clientX - c.x;
+	mouse.y = e.clientY - c.y;
 	mouse.button = e.buttons;
 }
