@@ -16,4 +16,8 @@ class Transform {
 	apply(vec) {
 		return [vec[0] * this.xx + vec[1] * this.xy + this.xt, vec[0] * this.yx + vec[1] * this.yy + this.yt];
 	}
+
+	setToCtx(ctx) {
+		ctx.setTransform(this.xx, this.xy, this.yx, this.yy, this.xt, this.yt);
+	}
 }
