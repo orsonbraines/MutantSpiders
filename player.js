@@ -87,13 +87,17 @@ class Player{
 				this.moveDirY = 0;
 			}
 		}
-		console.log(this.moveDirX, this.moveDirY);
 	}
 
 	tick(){
 		this.frame = 1 - this.frame;
-		this.x += this.moveDirX * this.v;
-		this.y += this.moveDirY * this.v;
+
+		let playerDirection = normalize([this.moveDirX, this.moveDirY]);
+
+		this.x += playerDirection[0] * this.v;
+		this.y += playerDirection[1] * this.v;
+
+
 		this.roundhouseKickFrame++;
 		if(this.moveDirX !== 0 || this.moveDirY !== 0) {
 			if(this.armDir === 1) {
@@ -127,7 +131,6 @@ class Player{
 		}else if(f <= 40){
 			this.legExtention = (40-f)*2;
 		}
-
 	}
 	startRoundhouseKick(){
 		this.roundhouseKickFrame = 0;
