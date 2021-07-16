@@ -45,3 +45,4 @@ function drawGame(){
 	spider.draw(ctx);
 	player.draw(ctx);
 }
+setInterval(()=>{player.startRoundhouseKick();},2000);
