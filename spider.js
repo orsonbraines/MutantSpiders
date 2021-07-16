@@ -11,6 +11,7 @@ class Spider {
 			[145, 175, 205, 230, 320, 350, 10, 70]
 		];
 		this.frame = 0;
+		this.subframe = 0;
 		for(let i = 0; i < 2; ++i) {
 			for(let j = 0; j < 8; ++j) {
 				this.leg_angles[i][j] = this.leg_angles[i][j] * Math.PI / 180;
@@ -53,8 +54,21 @@ class Spider {
 
 
 	tick() {
-		if(!spider.moving) return;
-		this.frame = 1 - this.frame;
-		this.theta += 0.05;
+		const delta = [mouse.x - this.x, mouse.y - this.y];
+		const deltaR = Math.sqrt(delta[0] * delta[0] + delta[1] * delta[1]);
+		this.theta = Math.atan2(-delta[1], delta[0]) - Math.PI / 2;
+		//console.log(delta[0],delta[1],this.theta);
+		const v = 5;
+		this.moving = (deltaR >= v)
+		if(this.moving) {
+			this.x += delta[0] * v / deltaR;
+			this.y += delta[1] * v / deltaR;
+
+			++this.subframe;
+			if(this.subframe == 10) {
+				this.subframe = 0;
+				this.frame = 1 - this.frame;
+			}
+		}
 	}
 }
