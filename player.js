@@ -8,9 +8,8 @@ class Player{
 		this.body_r = 12;
 		this.body_w = 40;
 		this.body_h = 12;
-		this.leg_r = 5
-		this.leg_x = 0;
-		this.leg_y = 0;
+		this.leg_r = 20
+		this.legExtention = 0;
 		this.armAngle = 0;
 		this.counter = 0;
 		this.theta = 0;
@@ -20,22 +19,23 @@ class Player{
 	}
 	draw(ctx) {
 		const t = new Transform([this.x, this.y], this.theta);
+		ctx.lineCap = 'round';
+		this.draw_leg(ctx, t);
 		this.draw_body(ctx, t);
 		this.draw_head(ctx, t);
 	}
 
-	draw_leg(){
-		ctx.fillStyle = '#0b60ff';
-		// ctx.beginPath();
-		// const rect = [
-		// 	t.apply([-this.body_w,this.body_h]),
-		// 	t.apply([this.body_w,this.body_h]),
-		// 	t.apply([this.body_w,-this.body_h]),
-		// 	t.apply([-this.body_w,-this.body_h]),
-		// 	t.apply([0,this.body_h])
-		// ]
-
-		ctx.ellipse(0,0, this.leg_r, this.leg_r, 0, 0, Math.PI * 2);
+	draw_leg(ctx, t){
+		ctx.strokeStyle = '#0b60ff';
+		ctx.lineWidth = this.leg_r;
+		ctx.beginPath();
+		const position = [
+			t.apply([10,0]),
+			t.apply([10,this.legExtention]),
+		]
+		ctx.moveTo(position[0][0],position[0][1]);
+		ctx.lineTo(position[1][0],position[1][1]);
+		ctx.stroke();
 	}
 
 	draw_head(ctx, t) {
@@ -95,7 +95,7 @@ class Player{
 		// this.theta = Math.sin(this.counter);
 		this.x += this.moveDirX * this.v;
 		this.y += this.moveDirY * this.v;
-		this.roundhouseKickFrame++;
+		this.roundhouseKickFrame+=1;
 		this.counter += 0.15;
 		//this.theta = Math.sin(this.counter)/3;
 
@@ -104,7 +104,11 @@ class Player{
 	interpretRoundhouseKick(f){
 		if(f <= 20){
 			this.theta = (f/20)*(Math.PI * 2);
+			this.legExtention = f*2;
+		}else if(f <= 40){
+			this.legExtention = (40-f)*2;
 		}
+
 	}
 	startRoundhouseKick(){
 		this.roundhouseKickFrame = 0;
