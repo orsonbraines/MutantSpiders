@@ -2,6 +2,7 @@ class Player{
 	constructor() {
 		this.x = 100;
 		this.y = 100;
+		this.v = 3;
 		this.theta = 0;
 		this.head_r = 20;
 		this.body_r = 12;
@@ -10,6 +11,9 @@ class Player{
 		this.armAngle = 0;
 		this.counter = 0;
 		this.theta = 0;
+		// Event handling
+		this.moveDirX = 0;
+		this.moveDirY = 0;
 	}
 	draw(ctx) {
 		const t = new Transform([this.x, this.y], this.theta);
@@ -48,9 +52,31 @@ class Player{
 		ctx.fill();
 	}
 
+	changeDir(isOn, dir) {
+		if(isOn) {
+			if(dir[0] != 0) {
+				this.moveDirX = dir[0];
+			}
+			if(dir[1] != 0) {
+				this.moveDirY = dir[1];
+			}
+		}
+		else {
+			if(dir[0] == this.moveDirX) {
+				this.moveDirX = 0;
+			}
+			if(dir[1] == this.moveDirY) {
+				this.moveDirY = 0;
+			}
+		}
+		console.log(this.moveDirX, this.moveDirY);
+	}
+
 	tick(){
 		this.frame = 1 - this.frame;
 		this.counter += 0.1;
 		this.theta = Math.sin(this.counter);
+		this.x += this.moveDirX * this.v;
+		this.y += this.moveDirY * this.v;
 	}
 }
