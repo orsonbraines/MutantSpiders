@@ -23,11 +23,18 @@ function gameLoop(){
 	drawGame();
 	requestAnimationFrame(gameLoop);
 }
-function drawGame(){
-	ctx.clearRect(0,0,canvas.width,canvas.height);
+
+function tickAll(){
 	spider.tick();
 	player.tick();
+}
+
+function drawGame(){
+	ctx.clearRect(0,0,canvas.width,canvas.height);
 	spider.draw(ctx);
 	player.draw(ctx);
 }
-setInterval(()=>{player.startRoundhouseKick();},2000);
+
+setInterval(tickAll, 16);
+
+//setInterval(()=>{player.startRoundhouseKick();},2000);

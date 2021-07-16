@@ -11,8 +11,9 @@ class Player{
 		this.leg_r = 5
 		this.leg_x = 0;
 		this.leg_y = 0;
-		this.armAngle = 0;
-		this.counter = 0;
+		this.maxArmPosition = 10;
+		this.armPosition = 0;
+		this.armDir = 1;
 		this.theta = 0;
 		// Event handling
 		this.moveDirX = 0;
@@ -91,14 +92,32 @@ class Player{
 
 	tick(){
 		this.frame = 1 - this.frame;
-		this.counter += 0.1;
-		// this.theta = Math.sin(this.counter);
 		this.x += this.moveDirX * this.v;
 		this.y += this.moveDirY * this.v;
 		this.roundhouseKickFrame++;
-		this.counter += 0.15;
-		//this.theta = Math.sin(this.counter)/3;
-
+		if(this.moveDirX !== 0 || this.moveDirY !== 0) {
+			if(this.armDir === 1) {
+				++this.armPosition;
+				if(this.armPosition === this.maxArmPosition) {
+					this.armDir = -1;
+				}
+			}
+			else {
+				--this.armPosition;
+				if(this.armPosition === -this.maxArmPosition) {
+					this.armDir = 1;
+				}
+			}
+		}
+		else {
+			if(this.armPosition > 0) {
+				--this.armPosition;
+			}
+			else if(this.armPosition < 0){
+				++this.armPosition;
+			}
+		}
+		this.theta = this.armPosition / 16;
 		this.interpretRoundhouseKick(this.roundhouseKickFrame);
 	}
 	interpretRoundhouseKick(f){
