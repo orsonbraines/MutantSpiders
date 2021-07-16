@@ -27,8 +27,8 @@ class Spider {
 		this.draw_head(ctx);
 		ctx.resetTransform();
 	}
-
 	draw_legs(ctx) {
+		ctx.fillStyle = '#000';
 		for(let i = 0; i < 8; ++i) {
 			ctx.beginPath();
 			ctx.moveTo(this.head_r * Math.cos(this.leg_angles[this.frame][i]),
