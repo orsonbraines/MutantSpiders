@@ -14,13 +14,12 @@ class Player{
 		this.leg_r = 20
 		this.legExtention = 0;
 		this.armAngle = 0;
-		this.theta = 0;
 		// Event handling
 		this.moveDirX = 0;
 		this.moveDirY = 0;
 	}
 	draw(ctx) {
-		const t = new Transform([this.x, this.y], this.theta);
+		const t = new Transform([this.x, this.y], this.theta + this.armAngle);
 		ctx.lineCap = 'round';
 		this.draw_leg(ctx, t);
 		this.draw_body(ctx, t);
@@ -118,12 +117,12 @@ class Player{
 				++this.armPosition;
 			}
 		}
-		this.theta = this.armPosition / 16;
+		this.armAngle = this.armPosition / 16;
 		this.interpretRoundhouseKick(this.roundhouseKickFrame);
 	}
 	interpretRoundhouseKick(f){
 		if(f <= 20){
-			this.theta = (f/20)*(Math.PI * 2);
+			this.armAngle = (f/20)*(Math.PI * 2);
 			this.legExtention = f*2;
 		}else if(f <= 40){
 			this.legExtention = (40-f)*2;
