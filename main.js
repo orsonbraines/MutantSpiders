@@ -26,10 +26,12 @@ function gameLoop(){
 	spider.theta = Math.atan2(-delta[1], delta[0]) - Math.PI / 2;
 	//console.log(delta[0],delta[1],spider.theta);
 	const v = 5;
-	if(deltaR >= v) {
+	 spider.moving = (deltaR >= v)
+	if(spider.moving) {
 		spider.x += delta[0] * v / deltaR;
 		spider.y += delta[1] * v / deltaR;
 	}
+
 	drawGame();
 	frames++;
 	requestAnimationFrame(gameLoop);

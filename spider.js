@@ -51,7 +51,9 @@ class Spider {
 		ctx.fill();
 	}
 
+
 	tick() {
+		if(!spider.moving) return;
 		this.frame = 1 - this.frame;
 		this.theta += 0.05;
 	}
