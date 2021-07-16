@@ -17,19 +17,21 @@ class Spider {
 				this.leg_angles[i][j] = this.leg_angles[i][j] * Math.PI / 180;
 			}
 		}
-		this.leg_length = 40;
+		this.leg_length = 30;
 	}
 
 	draw(ctx) {
 		const t = new Transform([this.x, this.y], this.theta);
 		t.setToCtx(ctx);
+		ctx.lineWidth = 2;
+		ctx.strokeStyle = '#000';
+		ctx.fillStyle = '#000';
 		this.draw_legs(ctx);
 		this.draw_body(ctx);
 		this.draw_head(ctx);
 		ctx.resetTransform();
 	}
 	draw_legs(ctx) {
-		ctx.fillStyle = '#000';
 		for(let i = 0; i < 8; ++i) {
 			ctx.beginPath();
 			ctx.moveTo(this.head_r * Math.cos(this.leg_angles[this.frame][i]),
