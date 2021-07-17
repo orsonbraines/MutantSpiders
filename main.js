@@ -30,7 +30,8 @@ function tickAll(){
 }
 
 function drawGame(){
-	ctx.clearRect(0,0,canvas.width,canvas.height);
+	ctx.resetTransform();
+	ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
 	spider.draw(ctx);
 	player.draw(ctx);
 }
