@@ -32,8 +32,8 @@ function tickAll(){
 function drawGame(){
 	ctx.resetTransform();
 	ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
-	ctx.drawImage(tree_4, 0, 0, canvas.width/6.5, canvas.height/5);
-	ctx.drawImage(tree_4, 250, 30, canvas.width/6.5, canvas.height/5);
+	ctx.drawImage(tree_5, 0, 0, canvas.width/8, canvas.height/6);
+	ctx.drawImage(tree_5, 250, 30, canvas.width/8, canvas.height/6);
 	spider.draw(ctx);
 	player.draw(ctx);
 }
