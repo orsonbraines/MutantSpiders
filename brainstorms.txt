@@ -10,6 +10,7 @@ Genes:
 		web speed
 		stamina/energy
 		appetite?
+		invisibility (like half faded of 25 percent faded)
 
 	booleans:
 		leg sharpness
@@ -19,3 +20,11 @@ Methods for fighting:
 	1. Shoot web -> long range
 	2. Bite -> short range
 	3. Sharp legs -> decapitation
+
+
+
+
+	CHANGES TO CODE
+
+	tanner changed the leg angles for the front 2 legs
+	tanner made the leg animation go quicker
