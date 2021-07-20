@@ -28,3 +28,7 @@ Methods for fighting:
 
 	tanner changed the leg angles for the front 2 legs
 	tanner made the leg animation go quicker
+
+	Q AND A
+
+	can you drw a colider on every tree and stop the movment of "sprites" when their touch it???
