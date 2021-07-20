@@ -7,8 +7,8 @@ class Spider {
 		this.body_rx = 12;
 		this.body_ry = 20;
 		this.leg_angles = [
-			[110, 170, 190, 220, 305, 335, 5, 30],
-			[145, 175, 205, 230, 320, 350, 10, 70]
+			[130, 170, 190, 220, 305, 335, 5, 30],
+			[145, 175, 205, 230, 320, 350, 10, 50]
 		];
 		this.frame = 0;
 		this.subframe = 0;
@@ -67,7 +67,7 @@ class Spider {
 			this.y += delta[1] * v / deltaR;
 
 			++this.subframe;
-			if(this.subframe == 10) {
+			if(this.subframe == 6) {
 				this.subframe = 0;
 				this.frame = 1 - this.frame;
 			}
