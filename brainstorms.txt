@@ -31,4 +31,7 @@ Methods for fighting:
 
 	Q AND A
 
-	can you drw a colider on every tree and stop the movment of "sprites" when their touch it???
+	can you draw a collider on every tree and stop the movement of "sprites" when their touch it???
+
+	I added an image of a river that can be used to draw a river. I did this so that you can have diff movement properties
+	 for land vs water
