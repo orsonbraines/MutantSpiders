@@ -38,12 +38,18 @@ function drawGame(){
 	ctx.drawImage(tree_5, 250, 45, canvas.width/9, canvas.height/6);
 	ctx.drawImage(tree_5, 0, 500, canvas.width/9, canvas.height/6);
 	ctx.drawImage(rock_1, 300, 300, canvas.width/19, canvas.height/15);
-	ctx.drawImage(river_2, 300, 350, canvas.width/24, canvas.height/15);
-	ctx.drawImage(river_2, 300, 360, canvas.width/24, canvas.height/15);
-	ctx.drawImage(river_2, 300, 370, canvas.width/24, canvas.height/15);
-	ctx.drawImage(river_2, 300, 380, canvas.width/24, canvas.height/15);
-	ctx.drawImage(river_2, 300, 390, canvas.width/24, canvas.height/15);
-	ctx.drawImage(river_2, 300, 400, canvas.width/24, canvas.height/15);
+	// ctx.drawImage(river_2, 300, 350, canvas.width/24, canvas.height/15);
+	// ctx.drawImage(river_2, 300, 360, canvas.width/24, canvas.height/15);
+	// ctx.drawImage(river_2, 300, 370, canvas.width/24, canvas.height/15);
+	// ctx.drawImage(river_2, 300, 380, canvas.width/24, canvas.height/15);
+	// ctx.drawImage(river_2, 300, 390, canvas.width/24, canvas.height/15);
+	//ctx.drawImage(river_2, 300, 400, canvas.width/24, canvas.height/15);
+	var c = 100
+	for(i = 100; i<400; i++){
+		c = c +.3
+		ctx.drawImage(river_2, c, i, canvas.width/19, canvas.height/15);
+	}
+	var c = 100
 
 	spider.draw(ctx);
 	player.draw(ctx);
