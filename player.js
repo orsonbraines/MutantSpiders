@@ -91,11 +91,19 @@ class Player{
 
 	tick(){
 		this.frame = 1 - this.frame;
+		const delta = [mouse.x - this.x, mouse.y - this.y];
+		const deltaR = Math.sqrt(delta[0] * delta[0] + delta[1] * delta[1]);
+		this.theta = Math.atan2(-delta[1], delta[0]) - Math.PI / 2;
 
-		let playerDirection = normalize([this.moveDirX, this.moveDirY]);
+		let keyDirection = normalize([this.moveDirX, this.moveDirY]);
+		let playerDirection = normalize(delta);
 
-		this.x += playerDirection[0] * this.v;
-		this.y += playerDirection[1] * this.v;
+		// if(distSq(playerDirection) !== 0) this.theta = Math.atan2(playerDirection[1], -playerDirection[0]) + Math.PI / 2;
+
+		let playerVelocity = mult(playerDirection,this.v,-keyDirection[1]);
+
+		this.x += playerVelocity[0];
+		this.y += playerVelocity[1];
 
 
 		this.roundhouseKickFrame++;

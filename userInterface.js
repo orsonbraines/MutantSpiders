@@ -25,9 +25,12 @@ function keyListener(e) {
 				break;
 			case 'd':
 				dir[0] = 1;
-				break;
+			break;
 		}
 		player.changeDir(e.type === 'keydown', dir);
+	}
+	else if(e.key === ' '){
+		player.startRoundhouseKick();
 	}
 }
 
