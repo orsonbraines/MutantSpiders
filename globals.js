@@ -3,6 +3,7 @@ const bg = document.getElementById('bg');
 const ctx = canvas.getContext('2d');
 var spider;
 var player;
+var cameraTransform;
 
 var mouse = {
 	x:0,

@@ -21,8 +21,10 @@ class Spider {
 	}
 
 	draw(ctx) {
-		const t = new Transform([this.x, this.y], this.theta);
-		t.setToCtx(ctx);
+		const t = modelMatrix([this.x, this.y], this.theta);
+		cameraTransform.setToCtx(ctx);
+
+		t.applyToCtx(ctx);
 		ctx.lineWidth = 2;
 		ctx.strokeStyle = '#000';
 		ctx.fillStyle = '#000';
@@ -59,12 +61,11 @@ class Spider {
 		const delta = [mouse.x - this.x, mouse.y - this.y];
 		const deltaR = Math.sqrt(delta[0] * delta[0] + delta[1] * delta[1]);
 		this.theta = Math.atan2(-delta[1], delta[0]) - Math.PI / 2;
-		//console.log(delta[0],delta[1],this.theta);
 		const v = 5;
 		this.moving = (deltaR >= v)
 		if(this.moving) {
-			this.x += delta[0] * v / deltaR;
-			this.y += delta[1] * v / deltaR;
+			//this.x += delta[0] * v / deltaR;
+			//this.y += delta[1] * v / deltaR;
 
 			++this.subframe;
 			if(this.subframe == 6) {

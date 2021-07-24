@@ -19,11 +19,13 @@ class Player{
 		this.moveDirY = 0;
 	}
 	draw(ctx) {
-		const t = new Transform([this.x, this.y], this.theta + this.armAngle);
+		cameraTransform.setToCtx(ctx);
+		const t = modelMatrix([this.x, this.y], this.theta + this.armAngle);
 		ctx.lineCap = 'round';
 		this.draw_leg(ctx, t);
 		this.draw_body(ctx, t);
 		this.draw_head(ctx, t);
+		ctx.resetTransform();
 	}
 
 	draw_leg(ctx, t){
@@ -43,7 +45,7 @@ class Player{
 		ctx.fillStyle = '#473100';
 		ctx.beginPath();
 		const center = t.apply([0,0]);
-		const r = t.scale * this.head_r;
+		const r = this.head_r;
 		ctx.ellipse(center[0], center[1], r, r, 0, 0, Math.PI * 2);
 		ctx.fill();
 	}
@@ -91,7 +93,10 @@ class Player{
 
 	tick(){
 		this.frame = 1 - this.frame;
-		const delta = [mouse.x - this.x, mouse.y - this.y];
+		const invT = cameraTransform.inverse();
+		const transformedMouse = invT.apply([mouse.x, mouse.y]);
+		const delta = [transformedMouse[0] - this.x, transformedMouse[1] - this.y];
+		//const delta = [mouse.x - this.x, mouse.y - this.y];
 		const deltaR = Math.sqrt(delta[0] * delta[0] + delta[1] * delta[1]);
 		this.theta = Math.atan2(-delta[1], delta[0]) - Math.PI / 2;
 

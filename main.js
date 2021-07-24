@@ -31,6 +31,9 @@ function tickAll(){
 
 function drawGame(){
 	ctx.resetTransform();
+	ctx.clearRect(0,0,canvas.width, canvas.height);
+	cameraTransform = viewMatrix(player.x, 1500,canvas.width, player.y, 1500.0 * canvas.height / canvas.width, canvas.height);
+	cameraTransform.setToCtx(ctx);
 	ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
 	ctx.drawImage(tree_5, 0, 0, canvas.width/9, canvas.height/6);
 	ctx.drawImage(tree_5, 700, 20, canvas.width/9, canvas.height/6);
